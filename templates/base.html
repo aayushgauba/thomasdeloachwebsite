@@ -8,7 +8,21 @@
             height: 100px !important; 
             margin-bottom: -100px !important; 
           }
+        body {background-color: black;}
+        .section {
+                display: flex;
+                justify-content: space-between;
+                padding: 40px;
+                margin:10 rem auto 0 auto;
+            }
+        .section img{
+                height :250px !important;
+            }
+        .carousel slide{
+                height:300px !important;
+            }
     </style>
+
     {% load static %}
 
     <head>
@@ -23,14 +37,7 @@
               <span class="fs-4"><img src = "{% static 'logo.png' %}" length = 120 width = 120></span>
             </a>
       
-            <ul class="nav nav-pills">
-              <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
-              <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
-              <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
-              <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
-              <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-            </ul>
-          </header>
+
         {%block content%}{%endblock%}
         <div class="container">
             <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
@@ -38,7 +45,7 @@
                 <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
                   <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"></use></svg>
                 </a>
-                <span class="mb-3 mb-md-0 text-muted">© 2022 Company, Inc</span>
+                <span class="mb-3 mb-md-0 text-muted">© 2022 Thomas A DeLoach</span>
               </div>
           
               <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">

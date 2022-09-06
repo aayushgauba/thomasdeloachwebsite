@@ -1,21 +1,14 @@
 {%extends 'base.html'%}
 {% block content%}
 {%load static%}
-<style>
-    body {background-color: black;}
-    .section {
-        display: flex;
-        justify-content: space-between;
-        padding: 40px;
-        margin:10 rem auto 0 auto;
-    }
-    .section img{
-        height :250px !important;
-    }
-    .carousel slide{
-        height:300px !important;
-    }
-</style>
+<ul class="nav nav-pills">
+  <li class="nav-item"><a href="#" class="nav-link px-2 text-secondary" aria-current="page">Home</a></li>
+  <li class="nav-item"><a href="about" class="nav-link px-2 text-white">About</a></li>
+  <li class="nav-item"><a href="podcastList" class="nav-link px-2 text-white">Podcasts</a></li>
+
+</ul>
+</header>
+
 <!--First section-->
 <div style="background-color:blue">
 <center><img src = "{% static 'Pastor-Deloach-cool-stance-black-and-white-fade.png' %}"height:250px; width = 300px;></center>

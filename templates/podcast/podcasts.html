@@ -1,0 +1,27 @@
+{%extends 'base.html'%}
+{% block content%}
+{%load static%}
+<ul class="nav nav-pills">
+  <li class="nav-item"><a href="#" class="nav-link px-2 text-white" aria-current="page">Home</a></li>
+  <li class="nav-item"><a href="about" class="nav-link px-2 text-white">About</a></li>
+  <li class="nav-item"><a href="podcastList" class="nav-link px-2 text-secondary">Podcasts</a></li>
+
+</ul>
+</header>
+
+<div class="row mb-2">
+    <div class="col-md-6">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static"style="background-color:white">
+          <strong class="d-inline-block mb-2 text-primary">World</strong>
+          <h3 class="mb-0">Featured post</h3>
+          <div class="mb-1 text-muted">Nov 12</div>
+          <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="stretched-link">Continue reading</a>
+        </div>
+      </div>
+    </div>
+   
+  </div>
+
+  {%endblock%}

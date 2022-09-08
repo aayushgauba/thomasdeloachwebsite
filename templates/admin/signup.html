@@ -1,0 +1,75 @@
+{%extends 'base.html'%}
+{%load static%}
+{% block content%}
+
+
+    <ul class="nav nav-pills">
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-secondary" aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="about" class="nav-link px-2 text-white">About</a></li>
+        <li class="nav-item"><a href="podcast/" class="nav-link px-2 text-white">Podcasts</a></li>
+      
+      </ul>
+    </header>
+<div style = "background-color:white">
+<center>
+    <div class = "col-md-7 col-lg-8" style="background-color:white">
+        <br>
+        <h4 class="form-label" _msthash="968656" _msttexthash="258271" style="direction: ltr; text-align: center;">Sign Up</h4>
+        <form class="needs-validation was-validated" novalidate="" action="{%url 'signup'%}" method="post">
+          {% csrf_token %}
+            <div class="row g-3">
+            <div class="col-sm-6">
+              <label for="firstName" class="form-label" _msthash="2295839" _msttexthash="130260" style="direction: ltr; text-align: left;">First Name</label>
+              <input type="text" class="form-control" name = "firstname" id="firstName" placeholder="" value="" required="">
+              <div class="invalid-feedback" _msthash="2152878" _msttexthash="6300827" _msthidden="1">
+              </div>
+            </div>
+
+            <div class="col-sm-6">
+              <label for="lastName" class="form-label" _msthash="2296086" _msttexthash="108628" style="direction: ltr; text-align: left;">Last Name</label>
+              <input type="text" class="form-control" name = "lastname" id="lastName" placeholder="" value="" required="">
+              <div class="invalid-feedback" _msthash="2153099" _msttexthash="7386340" _msthidden="1">
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="username" class="form-label" _msthash="2296333" _msttexthash="113997" style="direction: ltr; text-align: left;">Username</label>
+              <div class="input-group has-validation">
+                <span class="input-group-text">@</span>
+                <input type="text" class="form-control" id="username" name = "username" placeholder="Username" required="" _mstplaceholder="113997" style="direction: ltr; text-align: left;">
+              <div class="invalid-feedback" _msthash="2592174" _msttexthash="8580156" _msthidden="1">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <label for="email" class="form-label" _msthash="2296580" _msttexthash="261404" style="direction: ltr; text-align: left;">Email <span class="text-muted" _istranslated="1"></span></label>
+              <input type="email" class="form-control" id="email" name = "email" placeholder="you@example.com" required="" _mstplaceholder="274417" style="text-align: left;">
+              <div class="invalid-feedback" _msthash="2153541" _msttexthash="30316845" _msthidden="1">
+              </div>
+            </div>
+
+            <div class="col-12">
+                <label for="password" class="form-label" _msthash="2296580" _msttexthash="261404" style="direction: ltr; text-align: left;">Password <span class="text-muted" _istranslated="1"></span></label>
+                <input type="password" class="form-control" id="password" name = "password" placeholder="" required="" _mstplaceholder="274417" style="text-align: left;">
+                <div class="invalid-feedback" _msthash="2153541" _msttexthash="30316845" _msthidden="1">
+                </div>
+            <div class="col-12">
+                <label for="password" class="form-label" _msthash="2296580" _msttexthash="261404" style="direction: ltr; text-align: left;">Confirm Password <span class="text-muted" _istranslated="1"></span></label>
+                <input type="password" class="form-control" id="password2" name = "password2" placeholder="" required="" _mstplaceholder="274417" style="text-align: left;">
+                <div class="invalid-feedback" _msthash="2153541" _msttexthash="30316845" _msthidden="1">
+                </div>
+              </div>
+
+
+                    </div>
+            </div>
+
+          
+          <hr class="my-4">
+
+          <button class="w-100 btn btn-lg btn-primary" type="submit" _msthash="1634243" _msttexthash="157287" style="direction: ltr;">Register</button>
+            <br>
+        </form>
+    </div></center></div>
+{%endblock%}

@@ -1,0 +1,114 @@
+{% if messages %}
+{%for message in messages%}
+<style>
+    .alert {
+        position: relative !important;
+        padding: 0.75rem 1.25rem !important;
+        margin-bottom: 1rem !important;
+        border: 1px solid transparent !important;
+        border-radius: 0.25rem !important; }
+      
+      .alert-heading {
+        color: inherit !important; }
+      
+      .alert-link {
+        font-weight: 700!important; }
+      
+      .alert-dismissible {
+        padding-right: 4rem !important; }
+        .alert-dismissible .close {
+          position: absolute !important;
+          top: 0 !important;
+          right: 0 !important;
+          padding: 0.75rem 1.25rem !important;
+          color: inherit !important; }
+      
+      .alert-primary {
+        color: #081529 !important;
+        background-color: #cfd4dc !important;
+        border-color: #bcc3cd !important; }
+        .alert-primary hr {
+          border-top-color: #adb6c2 !important; }
+        .alert-primary .alert-link {
+          color: black !important; }
+      
+      .alert-secondary {
+        color: #196953 !important;
+        background-color: #d6f4ec !important;
+        border-color: #c5f0e4 !important; }
+        .alert-secondary hr {
+          border-top-color: #b1ebdb !important; }
+        .alert-secondary .alert-link {
+          color: #0f4032 !important; }
+      
+      .alert-success {
+        color: #11694f !important;
+        background-color: #d2f4ea !important;
+        border-color: #c1f0e2 !important; }
+        .alert-success hr {
+          border-top-color: #acebd8 !important; }
+        .alert-success .alert-link {
+          color: #0a3d2e !important; }
+      
+      .alert-info {
+        color: #0c5460 !important;
+        background-color: #d1ecf1 !important;
+        border-color: #bee5eb !important; }
+        .alert-info hr {
+          border-top-color: #abdde5 !important; }
+        .alert-info .alert-link {
+          color: #062c33 !important; }
+      
+      .alert-warning {
+        color: #856404 !important;
+        background-color: #fff3cd;
+        border-color: #ffeeba; }
+        .alert-warning hr {
+          border-top-color: #ffe8a1; }
+        .alert-warning .alert-link {
+          color: #533f03; }
+      
+      .alert-danger {
+        color: #792424;
+        background-color: #fbdada;
+        border-color: #f9cbcb; }
+        .alert-danger hr {
+          border-top-color: #f6b4b4; }
+        .alert-danger .alert-link {
+          color: #521818; }
+      
+      .alert-light {
+        color: #818182;
+        background-color: #fefefe;
+        border-color: #fdfdfe; }
+        .alert-light hr {
+          border-top-color: #ececf6; }
+        .alert-light .alert-link {
+          color: #686868; }
+      
+      .alert-dark {
+        color: #1b1e21;
+        background-color: #d6d8d9;
+        border-color: #c6c8ca; }
+        .alert-dark hr {
+          border-top-color: #b9bbbe; }
+        .alert-dark .alert-link {
+          color: #040505; }
+      
+</style>
+    <div id = "message" class= "container">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+        <strong>
+            {%if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                ERROR
+            {% else %}
+                {{message.tags|title}}
+            {% endif %}
+        </strong>
+            {{message}}
+    </div>
+</div>
+{% endfor %}
+{% endif %}

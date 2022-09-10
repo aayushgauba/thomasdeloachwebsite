@@ -6,12 +6,17 @@ from django.contrib.auth.admin import UserAdmin
 from django.contrib import messages
 from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
+from podcast.models import Podcast
+from django.contrib.auth.hashers import make_password
+
 import re
 def isValidEmail(email):
-    if len(email) > 7:
-        if re.match("^.+@([?)[a-zA-Z0-9-.]+.([a-zA-Z]{2,3}|[0-9]{1,3})(]?)$", email) != None:
-            return True
-    return False
+    regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+    if(re.fullmatch(regex, email)):
+        print("Valid Email")
+ 
+    else:
+        print("Invalid Email")
 
 def dashboard(request):
     return render(request, 'admin/dashboard.html')
@@ -21,13 +26,22 @@ def upload(request):
 
 def signin(request):
     if request.method == 'POST':
-        email = request.POST['email']
-        password = request.POST['password']
+        email = request.POST.get('email')
+        password = request.POST.get('password')
         user = auth.authenticate(email=email, password=password)
-    if user is not None:
-        auth.login(request, user)
-        return redirect('adminHome')
-    return render(request, 'admin/signin.html')
+        if user is not None:
+            auth.login(request, user)
+            return redirect('dashboard')
+        else:
+            user = auth.authenticate(username=email, password=password)
+            if user is not None:
+                auth.login(request, user)
+                return redirect('dashboard')
+            else:
+                messages.error(request, 'Invalid Credentials')
+                return redirect('signin')
+    else:    
+        return render(request, 'admin/signin.html')
 
 def signup(request):
     user = User.objects.all()
@@ -59,6 +73,13 @@ def signup(request):
             return redirect(signup)
 
         else:
-            user.create(username = username, first_name = firstname, email = email, last_name = lastname, password=password, is_staff=False, is_superuser = True)
+            User.objects.create_user(username = username, first_name = firstname, email = email, last_name = lastname, password=password, is_staff=False, is_superuser = True)
+            return redirect('signin')
 
     return render(request, 'admin/signup.html')
+
+def signout(request):
+    if request.method == 'POST':
+        auth.logout(request)
+        messages.success(request,'You are now logged out')
+        return redirect('index')

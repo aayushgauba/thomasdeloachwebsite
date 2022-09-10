@@ -91,19 +91,14 @@
       <form class="needs-validation was-validated" novalidate="" action="{%url 'signup'%}" method="post">
         {% csrf_token %}
           <div class="row g-3">
-          <div class="col-sm-6">
+          <div class="col-12">
             <label for="title" class="form-label" _msthash="2295839" _msttexthash="130260" style="direction: ltr; text-align: left;">Title</label>
             <input type="text" class="form-control" name = "title" id="title" placeholder="" value="" required="">
             <div class="invalid-feedback" _msthash="2152878" _msttexthash="6300827" _msthidden="1">
             </div>
           </div>
 
-          <div class="col-sm-6">
-            <label for="tags" class="form-label" _msthash="2296086" _msttexthash="108628" style="direction: ltr; text-align: left;">Tags</label>
-            <input type="text" class="form-control" name = "tags" id="tags" placeholder="" value="" required="">
-            <div class="invalid-feedback" _msthash="2153099" _msttexthash="7386340" _msthidden="1">
-            </div>
-          </div>
+
 
           <div class="col-12">
             <label for="summary" class="form-label" _msthash="2296580" _msttexthash="261404" style="direction: ltr; text-align: left;">Summary <span class="text-muted" _istranslated="1"></span></label>
@@ -124,10 +119,13 @@
               <input type="file" class="form-control" id="upload" name = "upload" placeholder="" required="" _mstplaceholder="274417" style="text-align: left;">
               <div class="invalid-feedback" _msthash="2153541" _msttexthash="30316845" _msthidden="1">
               </div>
-
-
-
-                  </div>
+            </div>
+            <div class="col-12">
+                <label for="date" class="form-label" _msthash="2296580" _msttexthash="261404" style="direction: ltr; text-align: left;">Date <span class="text-muted" _istranslated="1"></span></label>
+                <input type="date" class="form-control" id="date" name = "date" placeholder="" required="" _mstplaceholder="274417" style="text-align: left;">
+                <div class="invalid-feedback" _msthash="2153541" _msttexthash="30316845" _msthidden="1">
+                </div>
+              </div>
           </div>
 
         

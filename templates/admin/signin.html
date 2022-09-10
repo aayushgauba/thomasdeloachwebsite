@@ -184,10 +184,11 @@ main{
       
       </ul>
     </header>
+    {%include 'partials/message.html'%}
 
 <main class ="">
-  {%include 'partials/message.html'%}
   <form class = "needs-validation was-validated center" novalidate method="post">
+    {%csrf_token%}
     <br>
   <center>
     <h1 class="h3 mb-3 fw-normal" style="color:black">Sign in</h1>

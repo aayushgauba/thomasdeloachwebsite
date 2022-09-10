@@ -8,21 +8,26 @@ from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from podcast.models import Podcast
 from django.contrib.auth.hashers import make_password
-
 import re
+
 def isValidEmail(email):
     regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
     if(re.fullmatch(regex, email)):
-        print("Valid Email")
- 
+        return True
     else:
-        print("Invalid Email")
+        return False
 
 def dashboard(request):
-    return render(request, 'admin/dashboard.html')
+    if(request.user.is_authenticated):
+        return render(request, 'admin/dashboard.html')
+    else:
+        return redirect('signin')
 
 def upload(request):
-    return render(request, 'admin/upload.html')
+    if(request.user.is_authenticated):
+        return render(request, 'admin/upload.html')
+    else:
+        return redirect('signin')
 
 def signin(request):
     if request.method == 'POST':

@@ -16,6 +16,9 @@ def isValidEmail(email):
 def dashboard(request):
     return render(request, 'admin/dashboard.html')
 
+def upload(request):
+    return render(request, 'admin/upload.html')
+
 def signin(request):
     if request.method == 'POST':
         email = request.POST['email']

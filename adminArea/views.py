@@ -8,6 +8,8 @@ from django.core.exceptions import ValidationError
 from django.core.validators import validate_email
 from podcast.models import Podcast
 from django.contrib.auth.hashers import make_password
+from django.core.files.storage import FileSystemStorage
+from podcast.forms import PodcastForm
 import re
 
 def isValidEmail(email):
@@ -17,17 +19,26 @@ def isValidEmail(email):
     else:
         return False
 
+def upload(request):
+    if request.method == 'POST':
+        form = PodcastForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('dashboard')
+    else:
+        form = PodcastForm()
+    context = {
+            'form':form,
+        }
+    return render(request, 'admin/upload.html', context)
+
 def dashboard(request):
     if(request.user.is_authenticated):
         return render(request, 'admin/dashboard.html')
     else:
         return redirect('signin')
 
-def upload(request):
-    if(request.user.is_authenticated):
-        return render(request, 'admin/upload.html')
-    else:
-        return redirect('signin')
+
 
 def signin(request):
     if request.method == 'POST':

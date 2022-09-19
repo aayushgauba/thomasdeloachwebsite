@@ -7,11 +7,11 @@
     <title>Podcast</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
-
+<!-- 
     <form action = "{% url 'signout' %}" method = "post" id = "signout">
         {% csrf_token %}
         <input type = "hidden">
-      </form>
+      </form> -->
 
     <!-- Bootstrap core CSS -->
 <link href="https://getbootstrap.com/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -27,6 +27,91 @@
 
 
     <style>
+      #id_title{
+        display: block;
+        width: 100%;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-radius: .25rem;
+        transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+    #id_summary{
+      display: block;
+      width: 100%;
+      padding: .375rem .75rem;
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #212529;
+      background-color: #fff;
+      background-clip: padding-box;
+      border: 1px solid #ced4da;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      border-radius: .25rem;
+      transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  }
+  #id_description{
+    display: block;
+    width: 100%;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+#id_upload{
+  display: block;
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+#id_Date{
+  display: block;
+  width: 100%;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -92,46 +177,10 @@
         
 
       </div>
-      <form class="needs-validation was-validated" novalidate="" action="{%url 'signup'%}" method="post">
+      <form class="needs-validation was-validated" novalidate=""  method="post" enctype="multipart/form-data">
         {% csrf_token %}
-          <div class="row g-3">
-          <div class="col-12">
-            <label for="title" class="form-label" _msthash="2295839" _msttexthash="130260" style="direction: ltr; text-align: left;">Title</label>
-            <input type="text" class="form-control" name = "title" id="title" placeholder="" value="" required="">
-            <div class="invalid-feedback" _msthash="2152878" _msttexthash="6300827" _msthidden="1">
-            </div>
-          </div>
-
-
-
-          <div class="col-12">
-            <label for="summary" class="form-label" _msthash="2296580" _msttexthash="261404" style="direction: ltr; text-align: left;">Summary <span class="text-muted" _istranslated="1"></span></label>
-            <textarea name="summary" cols="40" rows="5" class="form-control" id="summary" placeholder="" required="" _mstplaceholder="274417" style="text-align: left;"></textarea>
-            <div class="invalid-feedback" _msthash="2153541" _msttexthash="30316845" _msthidden="1">
-            </div>
-          </div>
-
-          <div class="col-12">
-            <label for="description" class="form-label" _msthash="2296580" _msttexthash="261404" style="direction: ltr; text-align: left;">Description <span class="text-muted" _istranslated="1"></span></label>
-            <textarea name="description" cols="40" rows="5" class="form-control" id="description" placeholder="" required="" _mstplaceholder="274417" style="text-align: left;"></textarea>
-            <div class="invalid-feedback" _msthash="2153541" _msttexthash="30316845" _msthidden="1">
-            </div>
-          </div>
-
-          <div class="col-12">
-              <label for="upload" class="form-label" _msthash="2296580" _msttexthash="261404" style="direction: ltr; text-align: left;">Upload <span class="text-muted" _istranslated="1"></span></label>
-              <input type="file" class="form-control" id="upload" name = "upload" placeholder="" required="" _mstplaceholder="274417" style="text-align: left;">
-              <div class="invalid-feedback" _msthash="2153541" _msttexthash="30316845" _msthidden="1">
-              </div>
-            </div>
-            <div class="col-12">
-                <label for="date" class="form-label" _msthash="2296580" _msttexthash="261404" style="direction: ltr; text-align: left;">Date <span class="text-muted" _istranslated="1"></span></label>
-                <input type="date" class="form-control" id="date" name = "date" placeholder="" required="" _mstplaceholder="274417" style="text-align: left;">
-                <div class="invalid-feedback" _msthash="2153541" _msttexthash="30316845" _msthidden="1">
-                </div>
-              </div>
-          </div>
-
+        {{form.media}}
+        {{form}}
         
         <hr class="my-4">
 

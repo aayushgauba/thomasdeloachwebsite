@@ -135,5 +135,5 @@ MESSAGE_TAGS = {
     messages.ERROR:'danger'
 }
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'podcasts')
 MEDIA_URL = '/podcasts/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'podcasts')

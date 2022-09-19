@@ -3,9 +3,9 @@ from django.db import models
 
 # Create your models here.
 class Podcast(models.Model):
-    Title = models.TextField(unique = True)
-    Date = models.DateField()
-    Audio= models.FileField(upload_to='../podcasts')
-    Summary = models.TextField()
-    Description = models.TextField()
+    Title = models.CharField(unique = True, max_length=100, blank=False)
+    Date = models.DateField(blank=False)
+    upload= models.FileField(upload_to='podcasts', blank=False)
+    Summary = models.TextField(blank=False)
+    Description = models.TextField(blank=False)
 

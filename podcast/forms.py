@@ -6,7 +6,7 @@ from django.forms.widgets import DateInput
 class PodcastForm(forms.ModelForm):
     class Meta:
         model = Podcast
-        fields = '__all__'
+        fields = ['Title', 'Date', 'upload', 'Summary', 'Description']
         widgets= {
             'Date':DateInput({'type':'date'})
         }

@@ -7,4 +7,4 @@ def podcastList(request):
 
 def podcastView(request, podcast_id):
     podcast =  Podcast.objects.get(id = podcast_id)
-    return render(request,'podcast/podcast.html',context={'podcasts':podcast})
+    return render(request,'podcast/podcast.html',context={'podcast':podcast})

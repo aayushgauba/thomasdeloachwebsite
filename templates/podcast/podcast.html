@@ -1,0 +1,24 @@
+{%extends 'base.html'%}
+{%load static%}
+{% block content%}
+
+
+    <ul class="nav nav-pills">
+        <li class="nav-item"><a href="{%url 'index'%}" class="nav-link px-2 text-white" aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="{%url 'about'%}" class="nav-link px-2 text-white">About</a></li>
+        <li class="nav-item"><a href="{%url 'podcastList'%}" class="nav-link px-2 text-secondary">Podcasts</a></li>
+      
+      </ul>
+    </header>
+    <div class="col p-4 d-flex flex-column position-static" style="background-color:white">
+        <h3 class="mb-0" _msthash="1273116" _msttexthash="489021" style="direction: ltr; text-align: center;">{{podcast.Title}}</h3>
+        <div class="mb-1 text-muted" _msthash="1336166" _msttexthash="45968" style="direction: ltr; text-align: center;">{{podcast.Date}}</div>
+        <center>
+        <audio controls>
+            <source src="{{podcast.upload.url}}" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+        </center>
+        <p class="card-text mb-auto" _msthash="1224925" _msttexthash="5287659" style="direction: ltr; text-align: center;">{{podcast.Description}}</p>
+      </div>
+    {%endblock%}

@@ -10,18 +10,22 @@
 </header>
 
 <div class="row mb-2">
-    <div class="col-md-6">
-      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-        <div class="col p-4 d-flex flex-column position-static"style="background-color:white">
-          <strong class="d-inline-block mb-2 text-primary">World</strong>
-          <h3 class="mb-0">Featured post</h3>
-          <div class="mb-1 text-muted">Nov 12</div>
-          <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="stretched-link">Continue reading</a>
-        </div>
+  {%for podcast in podcasts%}
+  <div class="col-md-6">
+    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+      <div class="col p-4 d-flex flex-column position-static" style="background-color:white">
+        <h3 class="mb-0" _msthash="1273116" _msttexthash="489021" style="direction: ltr; text-align: left;">{{podcast.Title}}</h3>
+        <div class="mb-1 text-muted" _msthash="1336166" _msttexthash="45968" style="direction: ltr; text-align: left;">{{podcast.Date}}</div>
+        <p class="card-text mb-auto" _msthash="1224925" _msttexthash="5287659" style="direction: ltr; text-align: left;">{{podcast.Summary}}</p>
+        <a href="{% url 'podcastView' podcast.id %}" class="stretched-link" _msthash="1223677" _msttexthash="286650" style="direction: ltr; text-align: left;">Continue reading</a>
+      </div>
+      <div class="col-auto d-none d-lg-block" style="direction: ltr; text-align: left;">
+        <svg class="bd-placeholder-img" width="200" height="250" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false" _mstaria-label="478439" style="direction: ltr; text-align: left;"><title _mstHash="1337063" _mstTextHash="177515">Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect><text x="50%" y="50%" fill="#eceeef" dy=".3em" _mstHash="1755052" _mstTextHash="134056"></text></svg>
+
       </div>
     </div>
-   
   </div>
+{%endfor%}
+</div>
 
   {%endblock%}

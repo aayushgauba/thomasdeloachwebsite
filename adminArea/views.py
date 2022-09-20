@@ -34,7 +34,8 @@ def upload(request):
 
 def dashboard(request):
     if(request.user.is_authenticated):
-        return render(request, 'admin/dashboard.html')
+        podcasts = Podcast.objects.filter(Delete = False)
+        return render(request, 'admin/dashboard.html', context={'podcasts':podcasts})
     else:
         return redirect('signin')
 

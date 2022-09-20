@@ -8,4 +8,4 @@ class Podcast(models.Model):
     upload= models.FileField(upload_to='podcasts', blank=False)
     Summary = models.TextField(blank=False)
     Description = models.TextField(blank=False)
-
+    Delete = models.BooleanField(default=False)

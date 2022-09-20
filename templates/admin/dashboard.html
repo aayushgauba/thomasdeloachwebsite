@@ -81,6 +81,15 @@
               Upload
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'upload' %}">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+              </svg>
+              Recycle
+            </a>
+          </li>
           
         </ul>
 
@@ -91,8 +100,54 @@
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Dashboard</h1>
-
+        
       </div>
+      {%if podcasts%}
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col"></th>
+            <th scope="col">Title</th>
+            <th scope="col">Date Uploaded</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          {%for podcast in podcasts%}
+          <tr>
+            <th scope="row"></th>
+            <td>{{podcast.Title}}</td>
+            <td>{{podcast.Date}}</td>
+            <td><button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target=#{{podcast.Title}}>Delete</button></td>
+            <!-- Modal -->
+<div class="modal fade" id={{podcast.Title}} tabindex="-1" aria-labelledby="{{podcast.Title}}" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you sure that you want to delete. Note deleted podcasts can be restored from Recycle bin
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <form action = "{%url 'tempDelete' podcast.id %}" method ="post">
+          {%csrf_token%}
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+</div>
+          </tr>
+          {%endfor%}
+        </tbody>
+      </table>
+      {%else%}
+        <center>No podcasts exist</center>
+      {%endif%}
       </div>
     </main>
   </div>

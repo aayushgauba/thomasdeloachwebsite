@@ -14,7 +14,9 @@ def Delete(request, podcast_id):
         podcast = Podcast.objects.get(id = podcast_id)
         if(podcast.Delete == True):
             podcast.delete()
+            return redirect('recycle')
+
         else:
             podcast.Delete = True
             podcast.save()
-    return redirect('dashboard')
+            return redirect('dashboard')

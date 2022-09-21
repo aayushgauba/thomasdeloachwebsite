@@ -9,3 +9,7 @@ class Podcast(models.Model):
     Summary = models.TextField(blank=False)
     Description = models.TextField(blank=False)
     Delete = models.BooleanField(default=False)
+
+    def delete(self, *args, **kwargs):
+        self.upload.delete()
+        super().delete(*args, **kwargs)

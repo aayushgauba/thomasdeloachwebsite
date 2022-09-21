@@ -3,7 +3,7 @@ from django.db import models
 
 # Create your models here.
 class Podcast(models.Model):
-    Title = models.CharField(unique = True, max_length=100, blank=False)
+    Title = models.CharField( max_length=100, blank=False)
     Date = models.DateField(blank=False)
     upload= models.FileField(upload_to='podcasts', blank=False)
     Summary = models.TextField(blank=False)

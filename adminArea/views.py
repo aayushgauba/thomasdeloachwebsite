@@ -9,7 +9,7 @@ from django.core.validators import validate_email
 from podcast.models import Podcast
 from django.contrib.auth.hashers import make_password
 from django.core.files.storage import FileSystemStorage
-from podcast.forms import PodcastForm
+from podcast.forms import PodcastForm, PodcastUpdateForm, PodcastFileForm
 import re
 
 def isValidEmail(email):
@@ -39,7 +39,48 @@ def dashboard(request):
     else:
         return redirect('signin')
 
+def recycle(request):
+    if(request.user.is_authenticated):
+        podcasts = Podcast.objects.filter(Delete = True)
+        return render(request, 'admin/recycle.html', context={'podcasts':podcasts})
+    else:
+        return redirect('signin')
 
+def editText(request, podcast_id):
+    podcast = Podcast.objects.get(id = podcast_id)
+    if request.method == 'POST':
+        form = PodcastUpdateForm(request.POST)
+        if(form.is_valid()):
+            podcastNew = Podcast.objects.get(id = podcast_id)
+            podcastNew.id = podcast.id
+            podcastNew.Title = request.POST.get("Title")
+            podcastNew.Summary = request.POST.get("Summary")
+            podcastNew.Date = request.POST.get("Date")
+            podcastNew.Delete = podcast.Delete
+            podcastNew.Description = request.POST.get("Description")
+            podcastNew.save()
+            return redirect('dashboard')
+    else:
+        form = PodcastUpdateForm({'id':podcast.id,'Title':podcast.Title, 'Date':podcast.Date, 'Summary':podcast.Summary, 'Description':podcast.Description})
+    context = {
+            'form':form,
+        }
+    return render(request, 'admin/upload.html', context)    
+
+def fileupdate(request, podcast_id):
+    podcast = Podcast.objects.get(id = podcast_id)
+    if request.method == 'POST':
+        form = PodcastFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            podcast.delete()
+            form.save()
+            return redirect('dashboard')
+    else:
+        form = PodcastFileForm(instance=podcast)
+    context = {
+            'form':form,
+        }
+    return render(request, 'admin/upload.html', context)
 
 def signin(request):
     if request.method == 'POST':

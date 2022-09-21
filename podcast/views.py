@@ -9,9 +9,12 @@ def podcastView(request, podcast_id):
     podcast =  Podcast.objects.get(id = podcast_id)
     return render(request,'podcast/podcast.html',context={'podcast':podcast})
 
-def tempDelete(request, podcast_id):
+def Delete(request, podcast_id):
     if(request.method == 'POST'):
         podcast = Podcast.objects.get(id = podcast_id)
-        podcast.Delete = True
-        podcast.save()
+        if(podcast.Delete == True):
+            podcast.delete()
+        else:
+            podcast.Delete = True
+            podcast.save()
     return redirect('dashboard')

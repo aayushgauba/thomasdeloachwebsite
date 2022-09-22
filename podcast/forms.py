@@ -1,6 +1,7 @@
 from django import forms
 from .models import Podcast
 from django.forms.widgets import DateInput
+from ckeditor.widgets import CKEditorWidget
 
 
 class PodcastForm(forms.ModelForm):
@@ -8,14 +9,17 @@ class PodcastForm(forms.ModelForm):
         model = Podcast
         fields = ['Title', 'Date', 'upload', 'Summary', 'Description']
         widgets= {
-            'Date':DateInput({'type':'date'})
+            'Date':DateInput({'type':'date'}),
+            'Description':CKEditorWidget()
+            
         }
 
 class PodcastUpdateForm(forms.Form):
     Title = forms.CharField(max_length=100)
     Date = forms.DateField(widget = DateInput({'type':'date'}))
     Summary = forms.CharField(widget=forms.Textarea)
-    Description = forms.CharField(widget=forms.Textarea)
+    Description = forms.CharField(widget = CKEditorWidget())
+
 
 class PodcastFileForm(forms.ModelForm):
     class Meta:

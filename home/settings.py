@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'ckeditor',
+    'crispy_forms',
 ]
 
 MIDDLEWARE = [
@@ -137,3 +139,4 @@ MESSAGE_TAGS = {
 
 MEDIA_URL = '/podcasts/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'podcasts')
+CRISPY_TEMPLATE_PACK = 'uni_form'

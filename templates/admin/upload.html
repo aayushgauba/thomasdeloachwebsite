@@ -1,3 +1,4 @@
+{% load crispy_forms_tags %}
 <html lang="en"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -188,9 +189,39 @@
       <form class="needs-validation was-validated" novalidate=""  method="post" enctype="multipart/form-data">
         {% csrf_token %}
         {{form.media}}
-        {{form}}
-        
-        <hr class="my-4">
+        <form class="needs-validation was-validated" novalidate="" action="{%url 'upload'%}" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+            <div class="row g-3">
+            <div class="col-12">
+              <label for="id_Title" class="form-label" _msthash="2295839" _msttexthash="130260" style="direction: ltr; text-align: left;">Title</label>
+              {{form.Title}}
+            </div>
+
+            <div class="col-12">
+              <label for="id_Date" class="form-label" _msthash="2296086" _msttexthash="108628" style="direction: ltr; text-align: left;">Date</label>
+              {{form.Date}}
+            </div>
+
+            <div class="col-12">
+              <label for="id_Summary" class="form-label" _msthash="2296086" _msttexthash="108628" style="direction: ltr; text-align: left;">Date</label>
+              {{form.Summary}}
+            </div>
+
+            <div class="col-12">
+              <label for="id_Description" class="form-label" _msthash="2296086" _msttexthash="108628" style="direction: ltr; text-align: left;">Description</label><br>
+              {{form.Description}}
+            </div>
+
+            <div class="col-12">
+              <label for="id_Description" class="form-label" _msthash="2296086" _msttexthash="108628" style="direction: ltr; text-align: left;">Upload</label>
+              {{form.upload}}
+            </div>
+            
+
+
+                    </div>
+            </div>
+
 
         <button class="w-100 btn btn-lg btn-primary" type="submit" _msthash="1634243" _msttexthash="157287" style="direction: ltr;">Upload</button>
           <br>

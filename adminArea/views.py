@@ -44,7 +44,7 @@ def recycle(request):
         podcasts = Podcast.objects.filter(Delete = True)
         return render(request, 'admin/recycle.html', context={'podcasts':podcasts})
     else:
-        return redirect('signin')
+        return redirect('recycle')
 
 def editText(request, podcast_id):
     podcast = Podcast.objects.get(id = podcast_id)
@@ -65,7 +65,7 @@ def editText(request, podcast_id):
     context = {
             'form':form,
         }
-    return render(request, 'admin/upload.html', context)    
+    return render(request, 'admin/edittext.html', context)    
 
 def fileupdate(request, podcast_id):
     podcast = Podcast.objects.get(id = podcast_id)
@@ -80,7 +80,7 @@ def fileupdate(request, podcast_id):
     context = {
             'form':form,
         }
-    return render(request, 'admin/upload.html', context)
+    return render(request, 'admin/editFile.html', context)
 
 def signin(request):
     if request.method == 'POST':

@@ -19,6 +19,6 @@
             Your browser does not support the audio element.
           </audio>
         </center>
-        <p class="card-text mb-auto" _msthash="1224925" _msttexthash="5287659" style="direction: ltr; text-align: center;">{{podcast.Description}}</p>
+        {{podcast.Description|safe}}
       </div>
     {%endblock%}

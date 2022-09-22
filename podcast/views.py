@@ -9,6 +9,19 @@ def podcastView(request, podcast_id):
     podcast =  Podcast.objects.get(id = podcast_id)
     return render(request,'podcast/podcast.html',context={'podcast':podcast})
 
+def deleteall(request):
+    if(request.method == 'POST'):
+        podcasts = Podcast.objects.filter(Delete = True)
+        for podcast in podcasts:
+            podcast.delete()
+        return redirect('recycle')
+
+def restore(request, podcast_id):
+    podcast = Podcast.objects.get(id = podcast_id)
+    podcast.Delete = False
+    podcast.save()
+    return redirect('recycle')
+
 def Delete(request, podcast_id):
     if(request.method == 'POST'):
         podcast = Podcast.objects.get(id = podcast_id)

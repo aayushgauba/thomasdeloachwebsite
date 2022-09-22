@@ -99,7 +99,7 @@
 
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Dashboard</h1>
+        <h1 class="h2">Recycle</h1>
         
       </div>
       {%if podcasts%}
@@ -110,14 +110,37 @@
             <th scope="col">Title</th>
             <th scope="col">Date Uploaded</th>
             <th scope="col"></th>
+            <th scope="col"><button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target=#deleteall>Empty Bin</button></th>
           </tr>
         </thead>
+        <div class="modal fade" id=deleteall tabindex="-1" aria-labelledby="deleteall" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                Are you sure that you want to empty Bin. Note this action cannot be undone
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <form action = "{% url 'deleteall' %}" method ="post">
+                  {%csrf_token%}
+                  <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+                
+              </div>
+            </div>
+          </div>
+        </div>
         <tbody>
           {%for podcast in podcasts%}
           <tr>
             <th scope="row"></th>
             <td>{{podcast.Title}}</td>
             <td>{{podcast.Date}}</td>
+            <td><a class="btn btn-secondary" href ="{% url 'restore' podcast.id%}"> Recycle</a></td>
             <td><button type="button" class="btn btn-danger"  data-bs-toggle="modal" data-bs-target=#{{podcast.Title}}>Delete</button></td>
             <!-- Modal -->
 <div class="modal fade" id={{podcast.Title}} tabindex="-1" aria-labelledby="{{podcast.Title}}" aria-hidden="true">
@@ -128,7 +151,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Are you sure that you want to delete. Note deleted podcasts can be restored from Recycle bin
+        Are you sure that you want to delete. Note this action cannot be undone
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

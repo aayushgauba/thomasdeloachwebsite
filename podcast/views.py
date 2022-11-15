@@ -33,3 +33,11 @@ def Delete(request, podcast_id):
             podcast.Delete = True
             podcast.save()
             return redirect('dashboard')
+
+def search(request):
+    podcast = Podcast.objects.all()
+    if 'hide' in request.GET:
+        keywords = request.GET.get('hide')
+        if keywords:
+            podcast = Podcast.objects.filter(Title_icontains = keywords)
+    return render(request, "admin/recycle.html", context = {'podcast':podcast})

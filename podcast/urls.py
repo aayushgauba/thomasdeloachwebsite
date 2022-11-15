@@ -8,4 +8,5 @@ urlpatterns = [
     path('delete/item/<int:podcast_id>', views.Delete, name='Delete'),
     path('delete/all', views.deleteall, name='deleteall'),
     path('restore/<int:podcast_id>', views.restore, name = 'restore'),
+    path('search', views.search, name = "search"),
 ]
